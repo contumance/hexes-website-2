@@ -1,16 +1,22 @@
 // Main JavaScript file
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize animations
-    initAnimations();
+    // Inicializar animaciones
+    if (typeof initAnimations === 'function') {
+        initAnimations();
+    }
     
-    // Initialize parallax effect
-    initParallax();
+    // Inicializar parallax effect
+    if (typeof initParallax === 'function') {
+        initParallax();
+    }
     
-    // Initialize the hexagon animation
-    initHexAnimation();
+    // Inicializar la animación de hexágonos (solo si la función existe)
+    if (typeof initHexAnimation === 'function' && document.querySelector('.hexagon-container')) {
+        initHexAnimation();
+    }
     
-    // Handle navigation
+    // Manejar navegación
     initNavigation();
 });
 
@@ -22,19 +28,22 @@ function initNavigation() {
     const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
         const linkPath = link.getAttribute('href');
-        if (currentPage.includes(linkPath) && linkPath !== '#') {
+        if (linkPath && currentPage.includes(linkPath) && linkPath !== '#') {
             link.classList.add('active');
         }
     });
     
     // Mobile menu toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('nav ul');
+    const navMenu = document.querySelector('.mobile-nav');
     
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            }
         });
     }
     
@@ -46,6 +55,7 @@ function initNavigation() {
                 if (menuToggle) {
                     menuToggle.classList.remove('active');
                 }
+                document.body.classList.remove('no-scroll');
             }
         }
     });
@@ -66,6 +76,7 @@ function initNavigation() {
                     if (menuToggle) {
                         menuToggle.classList.remove('active');
                     }
+                    document.body.classList.remove('no-scroll');
                 }
                 
                 // Smooth scroll to target
@@ -75,23 +86,6 @@ function initNavigation() {
                 });
             }
         });
-    });
-}
-
-function initAnimations() {
-    // Add fade-in class to body to create page transition effect
-    document.body.classList.add('fade-in');
-    
-    // Apply staggered animations to lists
-    const staggeredLists = document.querySelectorAll('.stagger-animation');
-    staggeredLists.forEach(list => {
-        list.classList.add('stagger-fade-in');
-    });
-    
-    // Apply hover animations
-    const hoverElements = document.querySelectorAll('.hover-animation');
-    hoverElements.forEach(element => {
-        element.classList.add('hover-lift');
     });
 }
 

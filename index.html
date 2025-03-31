@@ -12,18 +12,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>HEXES</h1>
+            <!-- Nueva estructura para alinear el título y el botón de menú -->
+            <div class="header-top">
+                <h1>HEXES</h1>
+                <!-- Botón de hamburguesa exactamente al lado del título -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            
             <nav>
-                <ul>
+                <!-- Desktop navigation -->
+                <ul class="desktop-nav">
                     <li><a href="pages/band.html">band</a></li>
                     <li><a href="pages/gallery.html">gallery</a></li>
                     <li><a href="pages/oracle.html">oracle</a></li>
                     <li><a href="#follow">follow</a></li>
                 </ul>
+                
+                <!-- Mobile navigation overlay -->
+                <div class="mobile-nav">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li><a href="pages/band.html">band</a></li>
+                        <li><a href="pages/gallery.html">gallery</a></li>
+                        <li><a href="pages/oracle.html">oracle</a></li>
+                        <li><a href="#follow">follow</a></li>
+                    </ul>
+                </div>
             </nav>
         </header>
 
@@ -31,14 +54,13 @@
             <section class="hero">
                 <div class="hero-content">
                     <div class="hexagon-container">
-                        <!-- Hexagon animations will be created with JavaScript -->
                         <div class="hexagon hex-1 rotate-slow parallax parallax-slow"></div>
                         <div class="hexagon hex-2 rotate-medium parallax parallax-medium"></div>
                         <div class="hexagon hex-3 rotate-fast parallax parallax-medium"></div>
                         <div class="hexagon hex-4 rotate-very-fast parallax parallax-fast"></div>
                     </div>
                     <div class="hero-text fade-in">
-                        <p>Modern Metal</p>
+                        <p>Metal Cult</p>
                         <p>Hexagonal Harmony</p>
                     </div>
                 </div>
@@ -59,5 +81,31 @@
     <script src="js/animations.js"></script>
     <script src="js/parallax.js"></script>
     <script src="js/components/hexAnimation.js"></script>
+    
+    <!-- Mobile navigation script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            if (mobileMenuToggle && mobileNav) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+                
+                // Close mobile menu when clicking on a link
+                const mobileNavLinks = mobileNav.querySelectorAll('a');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenuToggle.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

@@ -186,3 +186,33 @@ footer {
         flex-direction: column;
     }
 }
+
+/* Añade estas reglas al final de tu main.css */
+
+/* Disable scrolling when mobile menu is active */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Adjust for iPhone safe area */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Increase navigation size for mobile */
+@media (max-width: 480px) {
+    nav a {
+        font-size: 1.4rem;
+        padding: 0.7rem 0;
+    }
+    
+    h1 {
+        margin-top: 2.5rem;
+    }
+}
