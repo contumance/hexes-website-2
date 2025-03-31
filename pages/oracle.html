@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Oracle | HEXES Band</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/components/navbar.css">
-    <link rel="stylesheet" href="../css/components/hexagon.css">
     <link rel="stylesheet" href="../css/components/oracle.css">
     <!-- Add Google Fonts for futuristic typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,19 +29,19 @@
 
         <main>
             <section class="oracle-section">
-                <h2>Oracle</h2>
+                <h2>ORACLE</h2>
                 <p class="oracle-description">Flip a card to receive a message from the cosmic void. Let the hexes guide your path.</p>
                 
                 <div class="oracle-container">
                     <div class="card-container">
+                        <!-- Simplified card structure -->
                         <div class="card" id="oracle-card">
                             <div class="card-front">
-                                <div class="hexagon-container card-hexagon">
-                                    <!-- Card front hexagon animation - smaller and simplified -->
-                                    <div class="hexagon hex-1 rotate-slow"></div>
-                                    <div class="hexagon hex-2 rotate-medium"></div>
-                                    <div class="hexagon hex-3 rotate-fast"></div>
-                                    <div class="hexagon hex-4 rotate-very-fast"></div>
+                                <div class="card-hexagon">
+                                    <div class="hex-1 rotate-slow"></div>
+                                    <div class="hex-2 rotate-medium"></div>
+                                    <div class="hex-3 rotate-fast"></div>
+                                    <div class="hex-4 rotate-very-fast"></div>
                                 </div>
                             </div>
                             <div class="card-back">
@@ -68,10 +67,12 @@
         </footer>
     </div>
 
+    <!-- Orden correcto: primero el script simplificado de oracle -->
+    <script src="../js/components/oracle.js"></script>
+    
+    <!-- Después los scripts generales que no deberían interferir -->
     <script src="../js/main.js"></script>
     <script src="../js/animations.js"></script>
     <script src="../js/parallax.js"></script>
-    <script src="../js/components/hexAnimation.js"></script>
-    <script src="../js/components/oracle.js"></script>
 </body>
 </html>

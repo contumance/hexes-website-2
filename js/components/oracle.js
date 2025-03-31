@@ -1,17 +1,18 @@
-// Oracle card functionality
+// Oracle card functionality - Improved version
 
 document.addEventListener('DOMContentLoaded', () => {
-    initOracle();
-});
-
-function initOracle() {
+    // Simple oracle initialization
     const card = document.getElementById('oracle-card');
     const message = document.getElementById('oracle-message');
     const newCardBtn = document.getElementById('new-card-btn');
     
-    if (!card || !message || !newCardBtn) return;
+    // Exit if elements don't exist
+    if (!card || !message || !newCardBtn) {
+        console.error('Required oracle elements not found');
+        return;
+    }
     
-    // Oracle messages - inspirational and band-related
+    // Oracle messages
     const messages = [
         "The void calls. Will you answer?",
         "In darkness, your light shines brightest.",
@@ -35,137 +36,115 @@ function initOracle() {
         "The spaces between notes tell the true story."
     ];
     
-    // Function to get a random message
+    // Current message stored in a variable to persist between card flips
+    let currentMessage = "";
+    
+    // Simple function to get a random message
     function getRandomMessage() {
         const randomIndex = Math.floor(Math.random() * messages.length);
         return messages[randomIndex];
     }
     
-    // Display a new random message
-    function displayNewMessage() {
-        // First, reset the animation by removing and re-adding the element
-        const oldMessage = message.textContent;
-        let newMessage;
+    // Flag to prevent multiple clicks
+    let isFlipping = false;
+    
+    // Set initial message only once (or if localStorage has one stored)
+    function initializeMessage() {
+        // Try to get previously saved message from localStorage
+        const savedMessage = localStorage.getItem('hexesOracleMessage');
         
-        // Make sure we don't get the same message twice in a row
-        do {
-            newMessage = getRandomMessage();
-        } while (newMessage === oldMessage && messages.length > 1);
-        
-        // Reset animation by cloning and replacing the element
-        const parent = message.parentNode;
-        const newElement = message.cloneNode(true);
-        parent.removeChild(message);
-        parent.appendChild(newElement);
-        
-        // Update the reference to the new element
-        const updatedMessage = document.getElementById('oracle-message');
-        updatedMessage.textContent = newMessage;
+        if (savedMessage && messages.includes(savedMessage)) {
+            currentMessage = savedMessage;
+        } else {
+            // Generate a new random message if none exists
+            currentMessage = getRandomMessage();
+            // Save to localStorage for persistence
+            localStorage.setItem('hexesOracleMessage', currentMessage);
+        }
     }
     
-    // Flip the card when clicked
-    card.addEventListener('click', () => {
-        // Only allow flipping if the card isn't currently being flipped
-        if (!card.classList.contains('flipping')) {
-            flipCard();
-        }
-    });
+    // Initialize the message on page load
+    initializeMessage();
     
-    // Function to handle card flipping
-    function flipCard() {
-        card.classList.add('flipping');
+    // Simple card flip handler
+    function handleCardClick() {
+        if (isFlipping) return;
+        isFlipping = true;
+        
+        console.log('Card clicked');
         
         if (card.classList.contains('flipped')) {
             // If already flipped, flip back to front
             card.classList.remove('flipped');
-            // Clear the message when going back to front
-            setTimeout(() => {
-                message.textContent = '';
-                card.classList.remove('flipping');
-            }, 400); // Half the transition time
+            
+            // Don't clear the message, we want to persist it
+            // Just make it not visible while card is on front side
         } else {
-            // Flip to the back and show a new message
+            // Flip to back and show the current message (not a new one)
             card.classList.add('flipped');
-            displayNewMessage();
-            setTimeout(() => {
-                card.classList.remove('flipping');
-            }, 800);
+            message.textContent = currentMessage;
         }
+        
+        // Reset the flipping state after animation completes
+        setTimeout(() => {
+            isFlipping = false;
+        }, 1000);
     }
     
-    // Draw a new card button
+    // Set up event listeners
+    card.addEventListener('click', handleCardClick);
+    
+    // Also handle touch events for mobile
+    card.addEventListener('touchend', (e) => {
+        e.preventDefault(); // Prevent default touch behavior
+        handleCardClick();
+    });
+    
+    // New card button handler - ONLY this should change the card
     newCardBtn.addEventListener('click', () => {
-        // If card is currently showing front, flip it
+        if (isFlipping) return;
+        
+        // Generate a new random message (different from current)
+        let newMessage;
+        do {
+            newMessage = getRandomMessage();
+        } while (newMessage === currentMessage && messages.length > 1);
+        
+        // Update the current message
+        currentMessage = newMessage;
+        
+        // Save to localStorage
+        localStorage.setItem('hexesOracleMessage', currentMessage);
+        
         if (!card.classList.contains('flipped')) {
-            flipCard();
+            // If not already flipped, flip it to show the new message
+            handleCardClick();
         } else {
-            // If already showing back, reset animation and update message
-            card.classList.add('updating');
+            // If already flipped, just update the message
+            message.textContent = currentMessage;
             
-            // Brief shake animation to indicate change
-            card.classList.add('shake');
-            setTimeout(() => {
-                card.classList.remove('shake');
-            }, 500);
-            
-            // Update the message
-            displayNewMessage();
-            
-            setTimeout(() => {
-                card.classList.remove('updating');
-            }, 800);
+            // Add a subtle animation to indicate the message has changed
+            message.style.animation = 'none';
+            void message.offsetWidth; // Trigger reflow
+            message.style.animation = 'messagePulse 0.5s ease';
         }
     });
     
-    // Add subtle movement to card on mouse move
-    const cardContainer = document.querySelector('.card-container');
-    
-    if (cardContainer) {
-        cardContainer.addEventListener('mousemove', (e) => {
-            // Only apply if not flipped
-            if (!card.classList.contains('flipped')) {
-                const rect = cardContainer.getBoundingClientRect();
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                // Calculate mouse position relative to center of card
-                const mouseX = e.clientX - rect.left - centerX;
-                const mouseY = e.clientY - rect.top - centerY;
-                
-                // Calculate rotation based on mouse position
-                // Limit rotation to a small amount
-                const rotateY = mouseX * 0.05; // Max ±10 degrees
-                const rotateX = -mouseY * 0.05; // Negative because we want to rotate up when mouse is at top
-                
-                // Apply rotation to the card
-                card.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+    // Add pulse animation if not already in the stylesheet
+    const addPulseAnimation = () => {
+        const styleElement = document.createElement('style');
+        styleElement.textContent = `
+            @keyframes messagePulse {
+                0% { opacity: 0.5; transform: scale(0.95); }
+                50% { opacity: 1; transform: scale(1.05); }
+                100% { opacity: 1; transform: scale(1); }
             }
-        });
-        
-        // Reset rotation when mouse leaves
-        cardContainer.addEventListener('mouseleave', () => {
-            if (!card.classList.contains('flipped')) {
-                card.style.transform = '';
-            }
-        });
-    }
+        `;
+        document.head.appendChild(styleElement);
+    };
     
-    // Add shake animation for the card
-    const styleSheet = document.styleSheets[0];
-    const shakeKeyframes = `
-    @keyframes shake {
-        0%, 100% { transform: rotateY(180deg); }
-        10%, 30%, 50%, 70%, 90% { transform: rotateY(178deg); }
-        20%, 40%, 60%, 80% { transform: rotateY(182deg); }
-    }`;
+    // Add the animation to the document
+    addPulseAnimation();
     
-    try {
-        styleSheet.insertRule(shakeKeyframes, styleSheet.cssRules.length);
-        
-        // Add the shake class for the animation
-        const shakeRule = `.card.shake { animation: shake 0.5s ease; }`;
-        styleSheet.insertRule(shakeRule, styleSheet.cssRules.length);
-    } catch (e) {
-        console.warn('Could not add keyframe animation via JavaScript:', e);
-    }
-}
+    console.log('Oracle initialized with improved message persistence');
+});
