@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | HEXES</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/components/navbar.css">
+    <link rel="stylesheet" href="../css/components/hexagon.css">
+    <link rel="stylesheet" href="../css/components/gallery.css">
+    <!-- Add Google Fonts for futuristic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HEXES</h1>
+            <nav>
+                <ul>
+                    <li><a href="../pages/band.html">band</a></li>
+                    <li><a href="../pages/gallery.html">gallery</a></li>
+                    <li><a href="../pages/oracle.html">oracle</a></li>
+                    <li><a href="#follow">follow</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="gallery-section">
+                <h2>Gallery</h2>
+                
+                <div class="gallery-container">
+                    <!-- Images will be dynamically loaded from the folder -->
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <div class="hex-overlay"></div>
+                            <img src="../assets/images/gallery/placeholder-1.jpg" alt="HEXES band performing" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">Live at Echo Chamber</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <div class="hex-overlay"></div>
+                            <img src="../assets/images/gallery/placeholder-2.jpg" alt="HEXES backstage" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">Studio Session</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <div class="hex-overlay"></div>
+                            <img src="../assets/images/gallery/placeholder-3.jpg" alt="HEXES promotional shot" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">Promotional Shoot</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <div class="hex-overlay"></div>
+                            <img src="../assets/images/gallery/placeholder-4.jpg" alt="HEXES band members" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">Rehearsal Space</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <div class="hex-overlay"></div>
+                            <img src="../assets/images/gallery/placeholder-5.jpg" alt="HEXES live performance" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">Sound Design</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <div class="hex-overlay"></div>
+                            <img src="../assets/images/gallery/placeholder-6.jpg" alt="HEXES band artwork" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">Album Art Concept</div>
+                    </div>
+                </div>
+                
+                <!-- Lightbox for full-screen image viewing -->
+                <div class="lightbox" id="gallery-lightbox">
+                    <div class="lightbox-content">
+                        <span class="close-lightbox">&times;</span>
+                        <img src="" alt="" id="lightbox-image">
+                        <div class="lightbox-caption" id="lightbox-caption"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="follow">
+            <div class="social-links">
+                <a href="#" target="_blank" rel="noopener noreferrer">Spotify</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Bandcamp</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/parallax.js"></script>
+    <script src="../js/components/gallery.js"></script>
+</body>
+</html>

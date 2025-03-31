@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle | HEXES Band</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/components/navbar.css">
+    <link rel="stylesheet" href="../css/components/hexagon.css">
+    <link rel="stylesheet" href="../css/components/oracle.css">
+    <!-- Add Google Fonts for futuristic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HEXES</h1>
+            <nav>
+                <ul>
+                    <li><a href="../pages/band.html">band</a></li>
+                    <li><a href="../pages/gallery.html">gallery</a></li>
+                    <li><a href="../pages/oracle.html">oracle</a></li>
+                    <li><a href="#follow">follow</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="oracle-section">
+                <h2>Oracle</h2>
+                <p class="oracle-description">Flip a card to receive a message from the cosmic void. Let the hexes guide your path.</p>
+                
+                <div class="oracle-container">
+                    <div class="card-container">
+                        <div class="card" id="oracle-card">
+                            <div class="card-front">
+                                <div class="hexagon-container card-hexagon">
+                                    <!-- Card front hexagon animation - smaller and simplified -->
+                                    <div class="hexagon hex-1 rotate-slow"></div>
+                                    <div class="hexagon hex-2 rotate-medium"></div>
+                                    <div class="hexagon hex-3 rotate-fast"></div>
+                                    <div class="hexagon hex-4 rotate-very-fast"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="message-container">
+                                    <p id="oracle-message"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="new-card-btn" class="btn">Draw a new card</button>
+                </div>
+            </section>
+        </main>
+
+        <footer id="follow">
+            <div class="social-links">
+                <a href="#" target="_blank" rel="noopener noreferrer">Spotify</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Bandcamp</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/parallax.js"></script>
+    <script src="../js/components/hexAnimation.js"></script>
+    <script src="../js/components/oracle.js"></script>
+</body>
+</html>

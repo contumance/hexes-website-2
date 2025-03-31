@@ -1,0 +1,112 @@
+/* General animations */
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+/* Soft slide up animation */
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 1s ease forwards;
+}
+
+/* Staggered animations for lists */
+.stagger-fade-in > * {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.stagger-fade-in > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-fade-in > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-fade-in > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-fade-in > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-fade-in > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Hover effects */
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+/* Page transitions */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.transition-out {
+    animation: fadeOut 0.5s ease forwards;
+    pointer-events: none;
+}
+
+.transition-in {
+    animation: fadeIn 0.8s ease;
+}
+
+body {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.1s;
+}
+
+/* Subtle pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 4s infinite ease-in-out;
+}
+
+/* Parallax effect classes */
+.parallax {
+    transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+
+.parallax-slow {
+    transform: translateZ(-2px) scale(1.2);
+}
+
+.parallax-medium {
+    transform: translateZ(-1px) scale(1.1);
+}
+
+.parallax-fast {
+    transform: translateZ(0) scale(1);
+}

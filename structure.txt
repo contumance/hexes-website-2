@@ -1,0 +1,26 @@
+hexes-website/
+├── assets/
+│   ├── images/
+│   ├── fonts/
+│   └── icons/
+├── css/
+│   ├── main.css
+│   ├── animations.css
+│   └── components/
+│       ├── navbar.css
+│       ├── hexagon.css
+│       ├── oracle.css
+│       └── ...
+├── js/
+│   ├── main.js
+│   ├── animations.js
+│   ├── parallax.js
+│   └── components/
+│       ├── hexAnimation.js
+│       ├── oracle.js
+│       └── ...
+├── pages/
+│   ├── band.html
+│   ├── gallery.html
+│   └── oracle.html
+└── index.html

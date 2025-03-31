@@ -1,0 +1,177 @@
+/* Band page styles */
+
+.band-section {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.band-description {
+    max-width: 800px;
+    margin: 1rem auto 4rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    padding: 0 1rem;
+}
+
+.members-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Individual member styles */
+.member {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Alternate alignment for even members */
+.member:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.member-image-container {
+    flex: 0 0 300px;
+    position: relative;
+}
+
+/* Hexagonal frame for member images */
+.hex-frame {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+    /* Gradient border effect */
+    background: linear-gradient(45deg, var(--gold-dark), var(--gold-lightest), var(--gold-dark));
+    padding: 3px; /* Border width */
+}
+
+.member-image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-color: #f1f1f1; /* Placeholder color */
+    transition: transform 0.5s ease;
+}
+
+/* Placeholder member images */
+#ale-image {
+    background-image: url('../assets/images/placeholder-ale.jpg');
+}
+
+#edo-image {
+    background-image: url('../assets/images/placeholder-edo.jpg');
+}
+
+#al-image {
+    background-image: url('../assets/images/placeholder-al.jpg');
+}
+
+/* Member info */
+.member-info {
+    flex: 1;
+}
+
+.member-info h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Underline effect for member names */
+.member-info h3::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, var(--gold-dark), transparent);
+}
+
+.member-role {
+    font-size: 1.2rem;
+    color: var(--gold-dark);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1em;
+}
+
+.member-bio {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Hover effects */
+.member:hover .member-image {
+    transform: scale(1.05);
+}
+
+/* Add a subtle glow to hexagon frame on hover */
+.member:hover .hex-frame {
+    box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+}
+
+/* Animation classes */
+.member {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.member.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+    .member, .member:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .member-info h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+    }
+    
+    .member-image-container {
+        flex: 0 0 250px;
+    }
+    
+    .hex-frame {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-image-container {
+        flex: 0 0 200px;
+    }
+    
+    .hex-frame {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .member-info h3 {
+        font-size: 1.7rem;
+    }
+    
+    .member-role {
+        font-size: 1.1rem;
+    }
+}
