@@ -1,0 +1,181 @@
+/* Elementos adicionales para el tema oscuro */
+
+/* ========== 1. EFECTOS DE TEXTURA ========== */
+
+/* Aplicar un efecto de grano sutil inspirado en la fotografía en blanco y negro */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('data:image/png;base64,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');
+    opacity: 0.03;
+    z-index: 1000;
+}
+
+/* ========== 2. ANIMACIONES ADICIONALES ========== */
+
+/* Animación de shake para la carta del oráculo */
+@keyframes shake {
+    0%, 100% { transform: rotateY(180deg); }
+    10%, 30%, 50%, 70%, 90% { transform: rotateY(178deg); }
+    20%, 40%, 60%, 80% { transform: rotateY(182deg); }
+}
+
+.card.shake {
+    animation: shake 0.5s ease;
+}
+
+/* Animación de parpadeo para textos destacados */
+@keyframes subtle-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.accent-text {
+    color: var(--accent-silver);
+    animation: subtle-flicker 3s infinite ease-in-out;
+}
+
+/* ========== 3. EFECTOS DE TRANSICIÓN ENTRE PÁGINAS ========== */
+
+/* Transición al entrar a una página */
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Transición al salir de una página */
+@keyframes page-exit {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+        filter: blur(5px);
+    }
+}
+
+.page-entering {
+    animation: page-enter 0.5s ease-out forwards;
+}
+
+.page-exiting {
+    animation: page-exit 0.5s ease-in forwards;
+}
+
+/* ========== 4. ESTILOS PARA MENSAJES Y ALERTAS ========== */
+
+/* Mensajes de error */
+.error-message {
+    background-color: rgba(70, 30, 30, 0.9);
+    border: 1px solid #933;
+    color: #fcc;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Mensajes de éxito */
+.success-message {
+    background-color: rgba(30, 60, 40, 0.9);
+    border: 1px solid #393;
+    color: #cfc;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Mensajes de información */
+.info-message {
+    background-color: rgba(30, 40, 60, 0.9);
+    border: 1px solid #369;
+    color: #cef;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ========== 5. MEJORAS DE ACCESIBILIDAD - ALTO CONTRASTE ========== */
+
+/* Aplicar estas clases cuando se activa el modo de alto contraste */
+.high-contrast {
+    --dark-bg: #000;
+    --darker-bg: #000;
+    --medium-dark: #111;
+    --light-text: #fff;
+    --muted-text: #eee;
+    --accent-silver: #fff;
+    --accent-gray: #ccc;
+    --accent-forest: #000;
+    --accent-cloud: #fff;
+}
+
+.high-contrast a {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.high-contrast button, 
+.high-contrast .btn {
+    border: 2px solid #fff;
+    color: #fff;
+    background: #000;
+}
+
+/* ========== 6. MEJORAS ESPECÍFICAS PARA COMPONENTES ========== */
+
+/* Mejorar la visibilidad del botón del menú hamburguesa */
+.mobile-menu-toggle span {
+    background-color: var(--light-text);
+    height: 3px;
+    border-radius: 1px;
+}
+
+/* Mejorar los iconos de redes sociales en el footer */
+.social-links a {
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+.social-links a:hover {
+    border-color: var(--accent-silver);
+    background-color: rgba(50, 50, 50, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Destacar la sección activa en la navegación */
+nav a.active {
+    color: var(--light-text);
+    position: relative;
+}
+
+nav a.active::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-silver);
+    border-radius: 50%;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
