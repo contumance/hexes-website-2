@@ -17,11 +17,10 @@
 </head>
 <body>
     <div class="container">
+        <!-- Esta es solo la parte relevante del HTML que necesitas actualizar en todas las páginas -->
         <header>
-            <!-- Nueva estructura para alinear el título y el botón de menú -->
             <div class="header-top">
                 <h1>HEXES</h1>
-                <!-- Botón de hamburguesa exactamente al lado del título -->
                 <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
                     <span></span>
                     <span></span>
@@ -33,23 +32,23 @@
                 <!-- Desktop navigation -->
                 <ul class="desktop-nav">
                     <li><a href="../index.html">home</a></li>
-                    <li><a href="band.html">band</a></li>
-                    <li><a href="gallery.html">gallery</a></li>
-                    <li><a href="oracle.html">oracle</a></li>
+                    <li><a href="pages/band.html">band</a></li>
+                    <li><a href="pages/gallery.html">gallery</a></li>
+                    <li><a href="pages/oracle.html">oracle</a></li>
                     <li><a href="#follow">follow</a></li>
                 </ul>
-                
-                <!-- Mobile navigation overlay -->
-                <div class="mobile-nav">
-                    <ul>
-                        <li><a href="../index.html">home</a></li>
-                        <li><a href="band.html">band</a></li>
-                        <li><a href="gallery.html">gallery</a></li>
-                        <li><a href="oracle.html">oracle</a></li>
-                        <li><a href="#follow">follow</a></li>
-                    </ul>
-                </div>
             </nav>
+            
+            <!-- IMPORTANTE: El menú móvil ahora está FUERA del nav para evitar problemas de estructura -->
+            <div class="mobile-nav">
+                <ul>
+                    <li><a href="../index.html">home</a></li>
+                    <li><a href="pages/band.html">band</a></li>
+                    <li><a href="pages/gallery.html">gallery</a></li>
+                    <li><a href="pages/oracle.html">oracle</a></li>
+                    <li><a href="#follow">follow</a></li>
+                </ul>
+            </div>
         </header>
 
         <main>
@@ -90,7 +89,8 @@
             </div>
         </footer>
     </div>
-
+    <!-- Asegúrate de que el script del menú se carga ANTES que los otros scripts -->
+    <script src="../js/simple-menu.js"></script>
     <script src="../js/components/oracle.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/animations.js"></script>

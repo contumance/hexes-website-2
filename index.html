@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HEXES | Metal Cult</title>
+    <title>HEXES | Modern Metal Cult</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/components/navbar.css">
     <link rel="stylesheet" href="css/components/hexagon.css">
+    <!-- Add favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <!-- Add Google Fonts for futuristic typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
 </head>
 <body>
     <div class="container">
+        <!-- Esta es solo la parte relevante del HTML que necesitas actualizar en todas las páginas -->
         <header>
-            <!-- Nueva estructura para alinear el título y el botón de menú -->
             <div class="header-top">
                 <h1>HEXES</h1>
-                <!-- Botón de hamburguesa exactamente al lado del título -->
                 <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
                     <span></span>
                     <span></span>
@@ -31,23 +31,24 @@
             <nav>
                 <!-- Desktop navigation -->
                 <ul class="desktop-nav">
+                    <li><a href="index.html">home</a></li>
                     <li><a href="pages/band.html">band</a></li>
                     <li><a href="pages/gallery.html">gallery</a></li>
                     <li><a href="pages/oracle.html">oracle</a></li>
                     <li><a href="#follow">follow</a></li>
                 </ul>
-                
-                <!-- Mobile navigation overlay -->
-                <div class="mobile-nav">
-                    <ul>
-                        <li><a href="index.html">home</a></li>
-                        <li><a href="pages/band.html">band</a></li>
-                        <li><a href="pages/gallery.html">gallery</a></li>
-                        <li><a href="pages/oracle.html">oracle</a></li>
-                        <li><a href="#follow">follow</a></li>
-                    </ul>
-                </div>
             </nav>
+            
+            <!-- IMPORTANTE: El menú móvil ahora está FUERA del nav para evitar problemas de estructura -->
+            <div class="mobile-nav">
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="pages/band.html">band</a></li>
+                    <li><a href="pages/gallery.html">gallery</a></li>
+                    <li><a href="pages/oracle.html">oracle</a></li>
+                    <li><a href="#follow">follow</a></li>
+                </ul>
+            </div>
         </header>
 
         <main>
@@ -60,8 +61,8 @@
                         <div class="hexagon hex-4 rotate-very-fast parallax parallax-fast"></div>
                     </div>
                     <div class="hero-text fade-in">
-                        <p>Metal Cult</p>
-                        <p>Hexagonal Harmony</p>
+                        <p>Modern Metal Cult</p>
+                        <p>Discover Our World</p>
                     </div>
                 </div>
             </section>
@@ -77,35 +78,16 @@
         </footer>
     </div>
 
+    <!-- Asegúrate de que el script del menú se carga ANTES que los otros scripts -->
+    <script src="js/simple-menu.js"></script>
+    <!-- Carga los scripts en el orden correcto -->
+    <!-- Primero carga scripts independientes -->
+    <script src="js/menu.js"></script>
+    
+    <!-- Luego carga scripts que pueden depender de otros -->
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/parallax.js"></script>
     <script src="js/components/hexAnimation.js"></script>
-    
-    <!-- Mobile navigation script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileNav = document.querySelector('.mobile-nav');
-            
-            if (mobileMenuToggle && mobileNav) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    mobileNav.classList.toggle('active');
-                    document.body.classList.toggle('no-scroll');
-                });
-                
-                // Close mobile menu when clicking on a link
-                const mobileNavLinks = mobileNav.querySelectorAll('a');
-                mobileNavLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        mobileMenuToggle.classList.remove('active');
-                        mobileNav.classList.remove('active');
-                        document.body.classList.remove('no-scroll');
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>
