@@ -1,6 +1,6 @@
-/* Corrección para el menú móvil - Guardar como 'css/mobile-menu-fix.css' */
+/* Solución definitiva para el menú móvil - Guardar como 'css/mobile-menu-fix.css' */
 
-/* Hamburger button styling - make sure it's visible and clickable */
+/* Asegurar que el botón hamburguesa sea visible y clickeable */
 .mobile-menu-toggle {
     display: block !important;
     position: absolute;
@@ -8,14 +8,14 @@
     right: 20px;
     width: 30px;
     height: 25px;
-    z-index: 1000;
+    z-index: 10000; /* Valor extremadamente alto para garantizar visibilidad */
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
 }
 
-/* The hamburger lines */
+/* Líneas del botón hamburguesa */
 .mobile-menu-toggle span {
     display: block;
     position: absolute;
@@ -29,7 +29,7 @@
     transition: .25s ease-in-out;
 }
 
-/* Position the hamburger lines */
+/* Posición de cada línea */
 .mobile-menu-toggle span:nth-child(1) {
     top: 0px;
 }
@@ -42,7 +42,7 @@
     top: 20px;
 }
 
-/* X animation when active */
+/* Animación X cuando está activo */
 .mobile-menu-toggle.active span:nth-child(1) {
     top: 10px;
     transform: rotate(45deg);
@@ -57,7 +57,7 @@
     transform: rotate(-45deg);
 }
 
-/* Mobile navigation */
+/* Navegación móvil */
 .mobile-nav {
     position: fixed;
     top: 0;
@@ -65,21 +65,23 @@
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.95);
-    z-index: 999;
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
     
-    /* Hidden by default */
+    /* Oculto por defecto */
     visibility: hidden;
     opacity: 0;
     transition: all 0.3s ease;
+    pointer-events: none;
 }
 
-/* Active state */
+/* Estado activo */
 .mobile-nav.active {
     visibility: visible;
     opacity: 1;
+    pointer-events: auto;
 }
 
 .mobile-nav ul {
@@ -98,21 +100,26 @@
     text-decoration: none;
     text-transform: lowercase;
     letter-spacing: 0.2em;
+    padding: 10px; /* Área de toque más grande */
+    display: inline-block;
 }
 
-/* Prevent scrolling when menu is open */
+/* Prevenir scroll cuando el menú está abierto */
 body.no-scroll {
     overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
-/* Hide mobile menu toggle on larger screens */
+/* Ocultar botón en pantallas grandes */
 @media (min-width: 769px) {
     .mobile-menu-toggle {
         display: none !important;
     }
 }
 
-/* Hide desktop nav on mobile */
+/* Ocultar navegación de escritorio en móvil */
 @media (max-width: 768px) {
     .desktop-nav {
         display: none !important;

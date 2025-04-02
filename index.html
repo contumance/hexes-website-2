@@ -13,13 +13,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- CSS Files -->
+    <!-- CSS Files - Orden importante -->
     <link rel="stylesheet" href="css/main-dark.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/components/navbar.css">
     <link rel="stylesheet" href="css/hexagon-dark.css">
     <link rel="stylesheet" href="css/dark-theme-extras.css">
     
-    <!-- NUEVO: Fix CSS para el menú móvil -->
+    <!-- Solución para el menú móvil - CARGAR AL FINAL para sobrescribir otros estilos -->
     <link rel="stylesheet" href="css/mobile-menu-fix.css">
 </head>
 <body>
@@ -27,7 +28,7 @@
         <header>
             <div class="header-top">
                 <h1>HEXES</h1>
-                <!-- Mobile menu toggle button -->
+                <!-- Botón del menú móvil -->
                 <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
                     <span></span>
                     <span></span>
@@ -36,7 +37,7 @@
             </div>
             
             <nav>
-                <!-- Desktop navigation -->
+                <!-- Navegación de escritorio -->
                 <ul class="desktop-nav">
                     <li><a href="index.html">home</a></li>
                     <li><a href="pages/band.html">band</a></li>
@@ -46,7 +47,7 @@
                 </ul>
             </nav>
             
-            <!-- Mobile navigation overlay - Outside nav element -->
+            <!-- Navegación móvil - Fuera del nav -->
             <div class="mobile-nav">
                 <ul>
                     <li><a href="index.html">home</a></li>
@@ -85,6 +86,7 @@
         </footer>
     </div>
 
+    <!-- Scripts - Cargar primero el arreglo del menú -->
     <script src="js/menu-fix.js"></script>
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>

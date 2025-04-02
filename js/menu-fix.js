@@ -1,12 +1,12 @@
-// Solución simplificada para el menú hamburguesa
-// Guardar este archivo como 'js/menu-fix.js'
+// Solución definitiva para el menú hamburguesa
+// Guarda este archivo como 'js/menu-fix.js'
 
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos del menú
     const menuButton = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.querySelector('.mobile-nav');
     
-    // Verificar que existen los elementos necesarios
+    // Verificar que existan los elementos necesarios
     if (!menuButton || !mobileMenu) {
         console.error('Error: No se encontraron los elementos del menú móvil');
         return;
@@ -20,7 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Evento para el botón hamburguesa
-    menuButton.addEventListener('click', toggleMenu);
+    menuButton.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevenir comportamiento por defecto
+        e.stopPropagation(); // Evitar propagación del evento
+        toggleMenu();
+    });
     
     // Cerrar menú al hacer clic en los enlaces
     const menuLinks = mobileMenu.querySelectorAll('a');
