@@ -29,14 +29,9 @@
     border-radius: 2px; /* Slightly rounded edges */
 }
 
-/* Add a subtle glow to make it more visible */
-.mobile-menu-toggle:hover span {
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
-}
-
-/* Mobile nav menu */
+/* Mobile nav menu - IMPORTANT FIX */
 .mobile-nav {
-    display: block;
+    display: flex !important;
     position: fixed;
     top: 0;
     left: 0;
@@ -44,19 +39,19 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.95); /* Very dark background */
     z-index: 9998;
-    display: flex;
     justify-content: center;
     align-items: center;
     
-    /* Initial hidden state */
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+    /* Initial hidden state - CRITICAL FIX */
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transition: visibility 0.3s ease, opacity 0.3s ease;
 }
 
-/* Active state */
+/* Active state - CRITICAL FIX */
 .mobile-nav.active {
-    opacity: 1;
+    visibility: visible !important;
+    opacity: 1 !important;
     pointer-events: auto;
 }
 
@@ -90,12 +85,6 @@
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle glow */
 }
 
-/* Hover effect */
-.mobile-nav a:hover {
-    transform: scale(1.1);
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
 /* X animation */
 .mobile-menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
@@ -109,11 +98,10 @@
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Ensure header positioning is correct */
-.header-top {
-    position: relative;
+/* No scroll class for body */
+body.no-scroll {
+    overflow: hidden;
+    height: 100%;
+    position: fixed;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }

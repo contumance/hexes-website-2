@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/components/navbar.css">
     <link rel="stylesheet" href="css/hexagon-dark.css">
     
-    <!-- Critical Fixes -->
+    <!-- Critical Fixes - Asegúrate de que este archivo exista -->
     <link rel="stylesheet" href="css/mobile-nav-dark.css">
     <link rel="stylesheet" href="css/dark-theme-extras.css">
 </head>
@@ -85,42 +85,11 @@
         </footer>
     </div>
 
-    <!-- JavaScript files -->
+    <!-- JavaScript files - Cargar simple-menu.js primero -->
     <script src="js/simple-menu.js"></script>
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/parallax.js"></script>
     <script src="js/components/hexAnimation.js"></script>
-    
-    <!-- Debug script to ensure elements are visible -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Page loaded - checking critical elements');
-            
-            // Check hexagons
-            const hexagons = document.querySelectorAll('.hexagon');
-            console.log('Hexagons found:', hexagons.length);
-            
-            // Check menu button
-            const menuButton = document.querySelector('.mobile-menu-toggle');
-            console.log('Menu button found:', menuButton ? 'Yes' : 'No');
-            
-            // Apply additional styles if needed
-            if (menuButton) {
-                menuButton.style.display = 'block';
-                menuButton.style.opacity = '1';
-                menuButton.style.visibility = 'visible';
-                menuButton.style.zIndex = '9999';
-                
-                // Make spans more visible
-                const spans = menuButton.querySelectorAll('span');
-                spans.forEach(span => {
-                    span.style.backgroundColor = '#ffffff';
-                    span.style.display = 'block';
-                    span.style.opacity = '1';
-                });
-            }
-        });
-    </script>
 </body>
 </html>
